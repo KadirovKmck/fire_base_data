@@ -12,20 +12,6 @@ class _HomePageState extends State<HomePage> {
   List searchResult = [];
 
   String hello = '';
-  // void searchResultFromFireBase(String query) async {
-  //   try {
-  //     final result = await FirebaseFirestore.instance
-  //         .collection('search')
-  //         .where('hio', isEqualTo: query)
-  //         .get();
-
-  //     setState(() {
-  //       searchResult = result.docs.map((e) => e.data()).toList();
-  //     });
-  //   } catch (e) {
-  //     log('null${searchResult}');
-  //   }
-  // }
 
   void fire(String hello) async {
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -63,64 +49,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // void searchResultFromFireBase(String hello) async {
-  //   final resalt = await FirebaseFirestore.instance
-  //       .collection('searchApp')
-  //       .where(
-  //         'hello1',
-  //         arrayContains: hello,
-  //       )
-  //       .get();
-  //   setState(() {
-  //     searchResult = resalt.docs.map((e) => e.data()).toList();
-  //   });
-  // }
-
-  // void searchResultFireBase(String hello) async {
-  //   final userresult = await FirebaseFirestore.instance
-  //       .collectionGroup(
-  //         'searchApp ',
-  //       )
-  //       .where(
-  //         'ser1',
-  //         isEqualTo: hello,
-  //       )
-  //       .get();
-  //   setState(() {
-  //     searchResult = userresult.docs.map((e) => e.data()).toList();
-  //   });
-  // }
-
   final _formKey = GlobalKey<FormState>();
-  // void loadData(QuizPaperModel serch1) async {
-  //   Serch1Model = serch1;
-  //   // lodinng
-  //   try {
-  //     final QuerySnapshot<Map<String, dynamic>> questionsQueru =
-  //         await serch1Fr.doc(serch1.id).collection('answers').get;
-  //     final answers = answersQueru.docs
-  //         .map((answers) => Answers.fromSnapshot(answers))
-  //         .toList();
-  //     serch1.answers = answers;
-  //     for (Answers _answers in serch1.questions!) {
-  //       final Answers.fromSnapshot<Map<String, dynamic>> carsQuery =
-  //           await serch1Fr
-  //               .doc(serch1.id)
-  //               .collection('questions')
-  //               .doc(_answers.id)
-  //               .collection('cars')
-  //               .get;
-  //       final cars = carsQuery.docs
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-  // void onePies() async {
-  //   final oneni =
-  //       await FirebaseFirestore.instance.collection('one').doc('documend_id');
-
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -155,12 +84,29 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                     child: ListView.builder(
-                  itemCount: searchResult.toList().length,
+                  shrinkWrap: true,
+                  itemCount: searchResult.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      // title: Text(searchResult[index]['hi'].toString()),
-                      subtitle: Text(
-                        '${searchResult[index]['foods'] ??''} - ${searchResult[index]['cars']?? ''}',
+                      // title: Column(
+                      //   children: [
+                      //     Text(
+                      //       '${searchResult[index]['foods'] ?? ''}  ${searchResult[index]['cars'] ?? ''}  ',
+                      //       style: TextStyle(
+                      //           fontSize: 18, fontWeight: FontWeight.w800),
+                      //     ),
+                      //   ],
+                      // ),
+                      title: Column(
+                        children: [
+                          for (var i in searchResult[index]['cars'] ??
+                              searchResult[index]['foods'])
+                            Text(
+                              i!,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w800),
+                            ),
+                        ],
                       ),
                     );
                   },

@@ -15,73 +15,73 @@
 // class _ResultViewState extends State<ResultView> {
 //   String _typedValue = '';
 //   String? i;
-//   // List<String> getCars() {
-//   //   if (typedValue == listCar[0].marka ||
-//   //       typedValue == listCar[0].marka.toLowerCase()) {
-//   //     return listCar[0].model;
-//   //   } else if (typedValue == listCar[1].marka) {
-//   //     return listCar[1].model;
-//   //   } else if (typedValue == listCar[2].marka) {
-//   //     return listCar[2].model;
-//   //   }
-//   //   return ['No Such Car Found!'];
-//   // }
+//   List<String> getCars() {
+//     if (typedValue == listCar[0].marka ||
+//         typedValue == listCar[0].marka.toLowerCase()) {
+//       return listCar[0].model;
+//     } else if (typedValue == listCar[1].marka) {
+//       return listCar[1].model;
+//     } else if (typedValue == listCar[2].marka) {
+//       return listCar[2].model;
+//     }
+//     return ['No Such Car Found!'];
+//   }
 
 //   List searchResult = [];
 //   String typedSearch = '';
 
-//   void searchFromFirebase(String typedSearch) async {
-//     final result = await FirebaseFirestore.instance
-//         .collection('cars')
-//         .where('car_list_alphabet', arrayContains: typedSearch)
-//         .get();
+//   // void searchFromFirebase(String typedSearch) async {
+//   //   final result = await FirebaseFirestore.instance
+//   //       .collection('cars')
+//   //       .where('car_list_alphabet', arrayContains: typedSearch)
+//   //       .get();
 
-//     setState(() {
-//       searchResult = result.docs.map((e) => e.data()).toList();
-//     });
-//   }
+//   //   setState(() {
+//   //     searchResult = result.docs.map((e) => e.data()).toList();
+//   //   });
+//   // }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text("Firebase Search"),
-//       ),
-//       body: Center(
-//         child: Column(
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.all(15.0),
-//               child: TextField(
-//                 decoration: InputDecoration(
-//                   border: OutlineInputBorder(),
-//                   hintText: "Search Here",
-//                 ),
-//                 onChanged: (query) {
-//                   setState(() {});
-//                   searchFromFirebase(query);
-//                 },
-//               ),
-//             ),
-//             Expanded(
-//               child: ListView.builder(
-//                 itemCount: searchResult.length,
-//                 itemBuilder: (context, index) {
-//                   return ListTile(
-//                     title: Text(
-//                       searchResult[index]['model'].toString(),
-//                     ),
-//                     subtitle: Text(
-//                       searchResult[index]['string_id'],
-//                     ),
-//                   );
-//                 },
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
+//   // @override
+//   // Widget build(BuildContext context) {
+//   //   return Scaffold(
+//   //     appBar: AppBar(
+//   //       title: const Text("Firebase Search"),
+//   //     ),
+//   //     body: Center(
+//   //       child: Column(
+//   //         children: [
+//   //           Padding(
+//   //             padding: const EdgeInsets.all(15.0),
+//   //             child: TextField(
+//   //               decoration: InputDecoration(
+//   //                 border: OutlineInputBorder(),
+//   //                 hintText: "Search Here",
+//   //               ),
+//   //               onChanged: (query) {
+//   //                 setState(() {});
+//   //                 searchFromFirebase(query);
+//   //               },
+//   //             ),
+//   //           ),
+//   //           Expanded(
+//   //             child: ListView.builder(
+//   //               itemCount: searchResult.length,
+//   //               itemBuilder: (context, index) {
+//   //                 return ListTile(
+//   //                   title: Text(
+//   //                     searchResult[index]['model'].toString(),
+//   //                   ),
+//   //                   subtitle: Text(
+//   //                     searchResult[index]['string_id'],
+//   //                   ),
+//   //                 );
+//   //               },
+//   //             ),
+//   //           ),
+//   //         ],
+//   //       ),
+//   //     ),
+//   //   );
 //     Scaffold(
 //       body: Column(
 //         mainAxisAlignment: MainAxisAlignment.center,
@@ -101,6 +101,7 @@
 //           ),
 //           ElevatedButton(
 //             onPressed: () {
+
 //               // getCars();
 //               // getFirestoreCar();
 //               setState(() {});
@@ -110,12 +111,12 @@
 //               style: TextStyle(fontSize: 25),
 //             ),
 //           ),
-//           // Column(
-//           //   children: getCars().map((element) => Text(element)).toList(),
-//           //   // [
-//           //   //   Text(getCars().toString()),
-//           //   // ],
-//           // ),
+//           Column(
+//             children: getCars().map((element) => Text(element)).toList(),
+//             // [
+//             //   Text(getCars().toString()),
+//             // ],
+//           ),
 //           Expanded(
 //             child: ListView.builder(
 //                 shrinkWrap: true,
@@ -124,8 +125,8 @@
 //                   return Text(searchBooks(_typedValue)[index]);
 //                 }),
 //           ),
-//           // for (i in searchBooks(_typedValue)) Text(i!),
-//           // Text(getCars().toString()),
+//           for (i in searchBooks(_typedValue)) Text(i!),
+//           Text(getCars().toString()),
 //         ],
 //       ),
 //     );
@@ -136,7 +137,6 @@
 //   @override
 //   _SearchScreenState createState() => _SearchScreenState();
 // }
-
 // class _SearchScreenState extends State<SearchScreen> {
 //   final TextEditingController _searchController = TextEditingController();
 //   List<QueryDocumentSnapshot> _searchResults = [];
